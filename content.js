@@ -1,7 +1,7 @@
 (() => {
   'use strict';
 
-  const VERSION = '1.0.0';
+  const VERSION = '1.0.1';
   const GRID = '#tib_conv_main_grid';
   const ROW = '.tib-listviewSingle[id^="conv_"]';
   const STORAGE_KEY = 'teamInboxMailViewPreviewWidth';

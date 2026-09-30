@@ -14,3 +14,7 @@ TeamInbox MailView is intentionally designed with a minimal attack and privacy s
 ## Reporting a security issue
 
 Please contact RedPandaOne through https://redpanda.one rather than publishing sensitive exploit details in a public issue.
+
+## Source repository
+
+https://github.com/redpanda-one/teaminbox-mailview

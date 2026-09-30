@@ -55,7 +55,7 @@ Website: https://redpanda.one
 
 ## Source repository
 
-After publishing the project on GitHub, use the repository URL as the canonical source-code link. Recommended repository name: `team-inbox-mailview`.
+Canonical source repository: https://github.com/redpanda-one/teaminbox-mailview
 
 ## License
 

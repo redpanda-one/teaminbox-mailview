@@ -42,6 +42,9 @@ TeamInbox MailView does not send TeamInbox data to RedPandaOne or to third-party
 
 ## Source review
 
+Canonical source repository: https://github.com/redpanda-one/teaminbox-mailview
+
+
 The extension source is distributed unobfuscated so its behavior can be reviewed. Publishing the source repository does not grant redistribution or commercial-use rights unless RedPandaOne provides them separately.
 
 ## Changes

@@ -1,6 +1,21 @@
 # TeamInbox MailView
 
-A privacy-first Chrome extension by **RedPandaOne** that gives Zoho TeamInbox a mail-style reading pane inspired by the practical layout of Zoho Mail.
+A privacy-first cross-browser extension by RedPandaOne that gives Zoho TeamInbox a mail-style reading pane inspired by the practical layout of Zoho Mail.
+
+## Browser compatibility
+
+TeamInbox MailView is built as a cross-browser WebExtension.
+
+Version 1.0.2 has been manually tested and verified on:
+
+- Google Chrome — supported
+- Microsoft Edge — supported
+- Mozilla Firefox — supported
+- Apple Safari — supported
+
+The same extension codebase and manifest are used across all four browsers without browser-specific modifications.
+
+Safari may require the user to explicitly allow the extension access to `teaminbox.zoho.com` before TeamInbox MailView can modify the TeamInbox interface.
 
 ## What it does
 

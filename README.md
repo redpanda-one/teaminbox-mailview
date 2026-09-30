@@ -48,6 +48,11 @@ The content script is limited by the manifest to:
 
 The source is intentionally small and unobfuscated so its behavior can be inspected. The project contains no remote executable code and no RedPandaOne network endpoint.
 
+
+## Branding
+
+TeamInbox MailView uses the official RedPandaOne product icon set. The RedPandaOne mascot identifies the publisher, while the TeamInbox/Mail badge distinguishes this extension within the RedPandaOne product family.
+
 ## Publisher
 
 **RedPandaOne**  

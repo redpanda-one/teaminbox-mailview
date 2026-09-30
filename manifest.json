@@ -1,7 +1,7 @@
 {
   "manifest_version": 3,
   "name": "TeamInbox MailView",
-  "version": "1.0.1",
+  "version": "1.0.2",
   "description": "Privacy-first mail-style reading pane for Zoho TeamInbox. No analytics, telemetry, or email-content collection. By RedPandaOne.",
   "homepage_url": "https://redpanda.one",
   "permissions": [
@@ -20,5 +20,19 @@
       ],
       "run_at": "document_idle"
     }
-  ]
+  ],
+  "icons": {
+    "16": "icons/icon16.png",
+    "32": "icons/icon32.png",
+    "48": "icons/icon48.png",
+    "128": "icons/icon128.png"
+  },
+  "action": {
+    "default_icon": {
+      "16": "icons/icon16.png",
+      "32": "icons/icon32.png",
+      "48": "icons/icon48.png",
+      "128": "icons/icon128.png"
+    }
+  }
 }

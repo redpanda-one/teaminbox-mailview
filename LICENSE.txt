@@ -1,0 +1,20 @@
+TeamInbox MailView — Proprietary Source-Available License
+
+Copyright © 2026 RedPandaOne. All rights reserved.
+
+The source code is made publicly viewable for transparency, security review, and evaluation.
+
+Permission is granted to download and use unmodified copies of TeamInbox MailView for internal evaluation and ordinary end-user use.
+
+Except with prior written permission from RedPandaOne, you may not:
+- redistribute, republish, sublicense, sell, rent, or commercially exploit the software or source code;
+- publish modified or derivative versions;
+- remove or misrepresent RedPandaOne ownership, copyright, or attribution;
+- use the TeamInbox MailView or RedPandaOne names to imply endorsement.
+
+No ownership rights are transferred by access to this repository.
+
+THE SOFTWARE IS PROVIDED "AS IS", WITHOUT WARRANTY OF ANY KIND, EXPRESS OR IMPLIED, TO THE MAXIMUM EXTENT PERMITTED BY APPLICABLE LAW.
+
+Publisher: RedPandaOne
+Website: https://redpanda.one

@@ -1,0 +1,24 @@
+{
+  "manifest_version": 3,
+  "name": "TeamInbox MailView",
+  "version": "1.0.0",
+  "description": "Privacy-first mail-style reading pane for Zoho TeamInbox. No analytics, telemetry, or email-content collection. By RedPandaOne.",
+  "homepage_url": "https://redpanda.one",
+  "permissions": [
+    "storage"
+  ],
+  "content_scripts": [
+    {
+      "matches": [
+        "https://teaminbox.zoho.com/*"
+      ],
+      "css": [
+        "styles.css"
+      ],
+      "js": [
+        "content.js"
+      ],
+      "run_at": "document_idle"
+    }
+  ]
+}

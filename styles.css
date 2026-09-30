@@ -1,0 +1,132 @@
+/* TeamInbox MailView v1.0 - RedPandaOne */
+#tib_conv_main_grid.tmv-enabled {
+  display: flex !important;
+  min-width: 0 !important;
+  overflow: hidden !important;
+}
+
+#tib_conv_main_grid.tmv-enabled > .tib-grid__lister {
+  flex: 1 1 auto !important;
+  width: auto !important;
+  min-width: 360px !important;
+  max-width: none !important;
+}
+
+#tib_conv_main_grid.tmv-enabled.tmv-preview-closed > .tib-grid__lister {
+  flex: 1 1 100% !important;
+  width: 100% !important;
+  max-width: 100% !important;
+}
+
+/* Hide every TeamInbox preview surface while MailView is closed, including the loader. */
+#tib_conv_main_grid.tmv-enabled.tmv-preview-closed > .tib-grid__preview {
+  display: none !important;
+}
+
+/* Loader may appear briefly while Zoho fetches a clicked conversation. Give it the same pane width. */
+#tib_conv_main_grid.tmv-enabled.tmv-preview-open > #tib-convpreview-loading:not(.tib-displaynone) {
+  display: flex !important;
+  flex: 0 0 var(--tmv-preview-width, 560px) !important;
+  width: var(--tmv-preview-width, 560px) !important;
+  min-width: 320px !important;
+  max-width: calc(100% - 360px) !important;
+  box-sizing: border-box !important;
+}
+
+/* Only the real Email preview gets forced visible. Do not unhide multiselect/other hidden preview nodes. */
+#tib_conv_main_grid.tmv-enabled.tmv-preview-open > .tib-grid__preview[aria-label="Email preview"] {
+  display: flex !important;
+  flex-direction: column !important;
+  align-items: stretch !important;
+  flex: 0 0 var(--tmv-preview-width, 560px) !important;
+  width: var(--tmv-preview-width, 560px) !important;
+  min-width: 320px !important;
+  max-width: calc(100% - 360px) !important;
+  min-height: 0 !important;
+  box-sizing: border-box !important;
+  overflow: hidden !important;
+}
+
+#tib_conv_main_grid.tmv-enabled.tmv-preview-open > .tib-grid__preview[aria-label="Email preview"] > .tib-grid__content {
+  min-width: 0 !important;
+  min-height: 0 !important;
+  overflow: auto !important;
+}
+
+
+/* Zoho's preview contains the mail header and the thread content as siblings.
+   MailView keeps them in one vertical reading column, like Zoho Mail. */
+#tib_conv_main_grid.tmv-enabled.tmv-preview-open > .tib-grid__preview[aria-label="Email preview"] > .tib-grid__mailheader,
+#tib_conv_main_grid.tmv-enabled.tmv-preview-open > .tib-grid__preview[aria-label="Email preview"] > .tib-grid__content {
+  flex: 0 0 auto !important;
+  width: 100% !important;
+  max-width: 100% !important;
+  box-sizing: border-box !important;
+}
+
+#tib_conv_main_grid.tmv-enabled.tmv-preview-open > .tib-grid__preview[aria-label="Email preview"] > .tib-grid__content {
+  flex: 1 1 auto !important;
+}
+
+/* TeamInbox already ships a native Close preview control, but hides it on desktop.
+   Expose that native control so its own Zoho click handler closes the pane safely. */
+#tib_conv_main_grid.tmv-enabled.tmv-preview-open .tib-previewbox__closemobile {
+  display: block !important;
+  visibility: visible !important;
+  opacity: 1 !important;
+  position: absolute !important;
+  top: 8px !important;
+  right: 8px !important;
+  left: auto !important;
+  z-index: 50 !important;
+}
+
+#tib_conv_main_grid.tmv-enabled.tmv-preview-open .tib-previewbox__head {
+  position: relative !important;
+}
+
+#tib_conv_main_grid.tmv-enabled.tmv-preview-open #tib-preview_header {
+  padding-right: 34px !important;
+}
+
+/* MailView divider sits between list and preview. */
+#tmv-resizer {
+  display: none;
+  flex: 0 0 7px;
+  width: 7px;
+  margin: 0 -3px;
+  cursor: col-resize;
+  z-index: 20;
+  position: relative;
+  background: transparent;
+  touch-action: none;
+}
+#tmv-resizer::after {
+  content: "";
+  position: absolute;
+  inset: 0 auto 0 3px;
+  width: 1px;
+  background: rgba(120, 130, 145, .35);
+}
+#tmv-resizer:hover::after,
+body.tmv-resizing #tmv-resizer::after {
+  width: 2px;
+  left: 2px;
+  background: rgba(80, 105, 145, .75);
+}
+#tib_conv_main_grid.tmv-preview-open > #tmv-resizer { display: block; }
+
+/* TeamInbox's own PREVIEW_VERTICAL separator lives inside the preview. Hiding it removes the second blue line. */
+.tmv-native-resizer-hidden { display: none !important; }
+
+body.tmv-resizing,
+body.tmv-resizing * {
+  cursor: col-resize !important;
+  user-select: none !important;
+}
+
+/* Closed state should not look as though the internally preloaded conversation is selected. */
+#tib_conv_main_grid.tmv-preview-closed .tib-listviewSingle--active {
+  background: inherit !important;
+  box-shadow: none !important;
+}

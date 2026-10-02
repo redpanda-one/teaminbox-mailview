@@ -1,14 +1,15 @@
-/* TeamInbox MailView v1.0 - RedPandaOne */
+/* TeamInbox MailView v1.0.4 TEST 4 - RedPandaOne */
 #tib_conv_main_grid.tmv-enabled {
   display: flex !important;
   min-width: 0 !important;
   overflow: hidden !important;
+  position: relative !important;
 }
 
 #tib_conv_main_grid.tmv-enabled > .tib-grid__lister {
   flex: 1 1 auto !important;
   width: auto !important;
-  min-width: 360px !important;
+  min-width: 280px !important;
   max-width: none !important;
 }
 
@@ -23,25 +24,25 @@
   display: none !important;
 }
 
-/* Loader may appear briefly while Zoho fetches a clicked conversation. Give it the same pane width. */
+/* Loader may appear briefly while Zoho fetches a clicked conversation. */
 #tib_conv_main_grid.tmv-enabled.tmv-preview-open > #tib-convpreview-loading:not(.tib-displaynone) {
   display: flex !important;
   flex: 0 0 var(--tmv-preview-width, 560px) !important;
   width: var(--tmv-preview-width, 560px) !important;
-  min-width: 320px !important;
-  max-width: calc(100% - 360px) !important;
+  min-width: 550px !important;
+  max-width: none !important;
   box-sizing: border-box !important;
 }
 
-/* Only the real Email preview gets forced visible. Do not unhide multiselect/other hidden preview nodes. */
+/* The real Email preview is never allowed below 550px and has no fixed maximum. */
 #tib_conv_main_grid.tmv-enabled.tmv-preview-open > .tib-grid__preview[aria-label="Email preview"] {
   display: flex !important;
   flex-direction: column !important;
   align-items: stretch !important;
   flex: 0 0 var(--tmv-preview-width, 560px) !important;
   width: var(--tmv-preview-width, 560px) !important;
-  min-width: 320px !important;
-  max-width: calc(100% - 360px) !important;
+  min-width: 550px !important;
+  max-width: none !important;
   min-height: 0 !important;
   box-sizing: border-box !important;
   overflow: hidden !important;
@@ -52,7 +53,6 @@
   min-height: 0 !important;
   overflow: auto !important;
 }
-
 
 /* Zoho's preview contains the mail header and the thread content as siblings.
    MailView keeps them in one vertical reading column, like Zoho Mail. */
@@ -68,8 +68,7 @@
   flex: 1 1 auto !important;
 }
 
-/* TeamInbox already ships a native Close preview control, but hides it on desktop.
-   Expose that native control so its own Zoho click handler closes the pane safely. */
+/* TeamInbox already ships a native Close preview control, but hides it on desktop. */
 #tib_conv_main_grid.tmv-enabled.tmv-preview-open .tib-previewbox__closemobile {
   display: block !important;
   visibility: visible !important;
@@ -89,18 +88,21 @@
   padding-right: 34px !important;
 }
 
-/* MailView divider sits between list and preview. */
+/* Comments / Extensions is intentionally left entirely to TeamInbox's native layout. */
+
+/* MailView divider between list and preview. */
 #tmv-resizer {
   display: none;
   flex: 0 0 7px;
   width: 7px;
   margin: 0 -3px;
   cursor: col-resize;
-  z-index: 20;
+  z-index: 32;
   position: relative;
   background: transparent;
   touch-action: none;
 }
+
 #tmv-resizer::after {
   content: "";
   position: absolute;
@@ -108,16 +110,22 @@
   width: 1px;
   background: rgba(120, 130, 145, .35);
 }
+
 #tmv-resizer:hover::after,
 body.tmv-resizing #tmv-resizer::after {
   width: 2px;
   left: 2px;
   background: rgba(80, 105, 145, .75);
 }
-#tib_conv_main_grid.tmv-preview-open > #tmv-resizer { display: block; }
 
-/* TeamInbox's own PREVIEW_VERTICAL separator lives inside the preview. Hiding it removes the second blue line. */
-.tmv-native-resizer-hidden { display: none !important; }
+#tib_conv_main_grid.tmv-preview-open > #tmv-resizer {
+  display: block;
+}
+
+/* TeamInbox's own PREVIEW_VERTICAL separator lives inside the preview. */
+.tmv-native-resizer-hidden {
+  display: none !important;
+}
 
 body.tmv-resizing,
 body.tmv-resizing * {
@@ -129,4 +137,50 @@ body.tmv-resizing * {
 #tib_conv_main_grid.tmv-preview-closed .tib-listviewSingle--active {
   background: inherit !important;
   box-shadow: none !important;
+}
+
+/* Keep TeamInbox's native RHS at its own width; MailView does not resize it. */
+#tib_conv_main_grid.tmv-enabled > #tib_rhs_conv_rhs_widget:not(.tib-displaynone) {
+  flex-shrink: 0 !important;
+}
+
+
+/* Make TeamInbox's native Comments / Extensions close control a full-width
+   toolbar that visually belongs to the RHS. The Zoho element and click handler stay native. */
+#tib-extCmtId.tmv-rhs-close {
+  position: fixed !important;
+  top: var(--tmv-rhs-close-top) !important;
+  left: var(--tmv-rhs-close-left) !important;
+  right: auto !important;
+  width: var(--tmv-rhs-close-width) !important;
+  min-width: 0 !important;
+  height: 38px !important;
+  padding: 0 14px !important;
+  display: flex !important;
+  align-items: center !important;
+  justify-content: flex-start !important;
+  gap: 8px !important;
+  z-index: 2147483000 !important;
+  border-radius: 0 !important;
+  box-sizing: border-box !important;
+  white-space: nowrap !important;
+  border-bottom: 1px solid rgba(127, 127, 127, 0.25) !important;
+}
+
+#tib-extCmtId.tmv-rhs-close::after {
+  content: attr(data-tmv-close-label) !important;
+  font-size: 12px !important;
+  line-height: 1 !important;
+  font-family: inherit !important;
+}
+
+#tib-extCmtId.tmv-rhs-close,
+#tib-extCmtId.tmv-rhs-close * {
+  overflow: visible !important;
+}
+
+/* Reserve a dedicated row above the native Comments / Extensions tabs. */
+#tib_rhs_conv_rhs_widget.tmv-rhs-open > .tib-grid__topbar {
+  padding-top: 38px !important;
+  box-sizing: border-box !important;
 }
